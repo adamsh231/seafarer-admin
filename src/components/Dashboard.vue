@@ -108,9 +108,7 @@ export default {
 
 @media only screen and (max-width: 1700px) {
   .custom-text-icon {
-    text-align: center !important;
-    width: 100% !important;
-    margin: 0 !important;
+    display: none !important;
   }
 
 
