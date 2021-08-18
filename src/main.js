@@ -15,6 +15,8 @@ import 'primeflex/primeflex.css'
 import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
+import Divider from 'primevue/divider';
+import Avatar from 'primevue/avatar';
 // -------------------- //
 
 
@@ -27,5 +29,7 @@ app.use(PrimeVue)
 app.component('Card', Card)
 app.component('InputText', InputText)
 app.component('Button', Button)
+app.component('Divider', Divider)
+app.component('Avatar', Avatar)
 
 app.mount('#app')
