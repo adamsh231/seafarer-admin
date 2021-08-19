@@ -108,7 +108,7 @@ export default {
 
 @media only screen and (min-height: 950px){
   .custom-sidebar {
-    width: 400px !important;
+    width: 320px !important;
   }
 
   .custom-navbar {
@@ -136,7 +136,7 @@ export default {
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1100px) {
   .custom-sidebar {
     width: 150px !important;
   }
