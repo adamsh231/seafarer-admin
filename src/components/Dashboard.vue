@@ -3,7 +3,7 @@
 
     <!--  Sidebar  -->
     <div class="col-fixed custom-sidebar">
-      <div class="w-full mt-4 mb-6 text-center">
+      <div class="w-full mt-3 mb-5 text-center">
         <img src="../assets/logo_web.png" class="custom-logo"/>
       </div>
       <div class="grid align-items-center mx-4 text-gray-600 pointer custom-sidebar-menu custom-sidebar-menu-active shadow-2">
@@ -11,57 +11,57 @@
           <i class="pi pi-th-large text-xl custom-icon"></i>
         </div>
         <div class="col-fixed custom-text-icon">
-          <p class="my-0">Dashboard</p>
+          <p class="my-0 custom-text-p">Dashboard</p>
         </div>
       </div>
       <Divider class="mb-4"/>
-      <div class="grid align-items-center mx-4 mb-3 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
         <div class="col text-center">
           <i class="pi pi-user text-xl custom-icon"></i>
         </div>
         <div class="col-fixed custom-text-icon">
-          <p class="my-0">Candidates</p>
+          <p class="my-0 custom-text-p">Candidates</p>
         </div>
       </div>
-      <div class="grid align-items-center mx-4 mb-3 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
         <div class="col text-center">
           <i class="pi pi-id-card text-xl custom-icon"></i>
         </div>
         <div class="col-fixed custom-text-icon">
-          <p class="my-0">Employees</p>
+          <p class="my-0 custom-text-p">Employees</p>
         </div>
       </div>
-      <div class="grid align-items-center mx-4 mb-3 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
         <div class="col text-center">
           <i class="pi pi-calendar-times text-xl custom-icon"></i>
         </div>
         <div class="col-fixed custom-text-icon">
-          <p class="my-0">Standby</p>
+          <p class="my-0 custom-text-p">Standby</p>
         </div>
       </div>
-      <div class="grid align-items-center mx-4 mb-3 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
         <div class="col text-center">
           <i class="pi pi-chart-line text-xl custom-icon"></i>
         </div>
         <div class="col-fixed custom-text-icon">
-          <p class="my-0">Reports</p>
+          <p class="my-0 custom-text-p">Reports</p>
         </div>
       </div>
       <Divider class="mb-4"/>
-      <div class="grid align-items-center mx-4 mb-3 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
         <div class="col text-center">
           <i class="pi pi-cog text-xl custom-icon"></i>
         </div>
         <div class="col-fixed custom-text-icon">
-          <p class="my-0">Settings</p>
+          <p class="my-0 custom-text-p">Settings</p>
         </div>
       </div>
-      <div class="grid align-items-center mx-4 mb-3 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
         <div class="col text-center custom-icon">
           <i class="pi pi-sign-out text-xl"></i>
         </div>
         <div class="col-fixed custom-text-icon">
-          <p class="my-0">Sign Out</p>
+          <p class="my-0 custom-text-p">Sign Out</p>
         </div>
       </div>
     </div>
@@ -106,7 +106,7 @@ export default {
   //border: 1px solid;
 }
 
-@media only screen and (min-height: 950px){
+@media only screen and (min-height: 950px) {
   .custom-sidebar {
     width: 320px !important;
   }
@@ -134,6 +134,10 @@ export default {
   .custom-logo {
     width: 180px !important;
   }
+
+  .custom-text-p {
+    font-size: 20px !important;
+  }
 }
 
 @media only screen and (max-width: 1100px) {
@@ -146,7 +150,7 @@ export default {
   }
 
   .custom-logo {
-    width: 120px !important;
+    width: 90px !important;
   }
 }
 
@@ -166,7 +170,7 @@ export default {
 }
 
 .custom-logo {
-  width: 150px;
+  width: 120px;
 }
 
 .custom-admin {
@@ -188,7 +192,7 @@ export default {
 }
 
 .custom-sidebar {
-  width: 300px;
+  width: 250px;
   background-color: #ffffff;
   border-right: 1px solid grey;
 }
@@ -199,5 +203,9 @@ export default {
 
 .custom-text-icon {
   width: 70%;
+}
+
+.custom-text-p {
+  font-size: 15px;
 }
 </style>
