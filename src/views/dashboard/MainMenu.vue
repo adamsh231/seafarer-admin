@@ -1,5 +1,5 @@
 <template>
-<Dashboard/>
+  Main Menu
 </template>
 
 <script>

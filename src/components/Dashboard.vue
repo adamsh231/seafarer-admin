@@ -85,7 +85,7 @@
 
       <!--  Content  -->
       <div class="custom-content">
-
+        <slot name="content"></slot>
       </div>
       <!-- --------- -->
 
@@ -95,7 +95,6 @@
 </template>
 
 <script>
-
 export default {
   name: "Dashboard",
 }
