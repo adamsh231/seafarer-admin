@@ -3,8 +3,8 @@
   <!--  Sidebar  -->
   <Sidebar :showCloseIcon="false" :visible="isShowSidebar">
 
-    <div class="text-right mr-3 mb-2 cursor-pointer" @click="isShowSidebar = false">
-      <i class="pi pi-times"></i>
+    <div class="text-right mr-3 mb-2">
+      <i class="pi pi-times cursor-pointer" @click="isShowSidebar = false"></i>
     </div>
 
     <div class="w-full mt-3 mb-5 text-center">
