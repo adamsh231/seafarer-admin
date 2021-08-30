@@ -1,4 +1,75 @@
 <template>
+
+  <!--  Sidebar  -->
+  <Sidebar :showCloseIcon="false" :visible="isShowSidebar">
+
+    <div class="text-right mr-3 mb-2 cursor-pointer" @click="isShowSidebar = false">
+      <i class="pi pi-times"></i>
+    </div>
+
+    <div class="w-full mt-3 mb-5 text-center">
+      <img src="../assets/logo_web.png" class="custom-logo"/>
+    </div>
+    <div class="grid align-items-center mx-4 text-gray-600 pointer custom-sidebar-menu custom-sidebar-menu-active shadow-2">
+      <div class="col text-center">
+        <i class="pi pi-th-large text-xl custom-icon"></i>
+      </div>
+      <div class="col-fixed custom-text-icon">
+        <p class="my-0 custom-text-p">Dashboard</p>
+      </div>
+    </div>
+    <Divider class="mb-4"/>
+    <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div class="col text-center">
+        <i class="pi pi-user text-xl custom-icon"></i>
+      </div>
+      <div class="col-fixed custom-text-icon">
+        <p class="my-0 custom-text-p">Candidates</p>
+      </div>
+    </div>
+    <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div class="col text-center">
+        <i class="pi pi-id-card text-xl custom-icon"></i>
+      </div>
+      <div class="col-fixed custom-text-icon">
+        <p class="my-0 custom-text-p">Employees</p>
+      </div>
+    </div>
+    <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div class="col text-center">
+        <i class="pi pi-calendar-times text-xl custom-icon"></i>
+      </div>
+      <div class="col-fixed custom-text-icon">
+        <p class="my-0 custom-text-p">Standby</p>
+      </div>
+    </div>
+    <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div class="col text-center">
+        <i class="pi pi-chart-line text-xl custom-icon"></i>
+      </div>
+      <div class="col-fixed custom-text-icon">
+        <p class="my-0 custom-text-p">Reports</p>
+      </div>
+    </div>
+    <Divider class="mb-4"/>
+    <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div class="col text-center">
+        <i class="pi pi-cog text-xl custom-icon"></i>
+      </div>
+      <div class="col-fixed custom-text-icon">
+        <p class="my-0 custom-text-p">Settings</p>
+      </div>
+    </div>
+    <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div class="col text-center custom-icon">
+        <i class="pi pi-sign-out text-xl"></i>
+      </div>
+      <div class="col-fixed custom-text-icon">
+        <p class="my-0 custom-text-p">Sign Out</p>
+      </div>
+    </div>
+  </Sidebar>
+
   <div class="grid h-screen m-0 p-0 custom-admin">
 
     <!--  Sidebar  -->
@@ -72,7 +143,7 @@
       <!--  Navbar  -->
       <div class="custom-navbar">
         <div class="grid h-full mx-1 my-auto">
-          <div class="col-fixed text-left my-auto ml-2">
+          <div class="col-fixed text-left my-auto ml-2" @click="isShowSidebar = true">
             <i class="pi pi-align-justify text-3xl custom-navbar-button hidden"></i>
           </div>
           <div class="col text-right my-auto">
@@ -97,6 +168,11 @@
 <script>
 export default {
   name: "Dashboard",
+  data() {
+    return {
+      isShowSidebar: false
+    }
+  }
 }
 </script>
 
@@ -166,6 +242,19 @@ export default {
   .custom-user-name {
     font-size: 13px !important;
   }
+
+  .custom-logo {
+    width: 120px !important;
+  }
+
+  .custom-text-icon {
+    display: block !important;
+  }
+
+  .custom-text-p {
+    font-size: 20px !important;
+  }
+
 }
 
 .custom-logo {

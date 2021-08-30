@@ -17,8 +17,8 @@ import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import Divider from 'primevue/divider';
 import Avatar from 'primevue/avatar';
+import Sidebar from 'primevue/sidebar';
 // -------------------- //
-
 
 const app = createApp(App)
 
@@ -31,5 +31,6 @@ app.component('InputText', InputText)
 app.component('Button', Button)
 app.component('Divider', Divider)
 app.component('Avatar', Avatar)
+app.component('Sidebar', Sidebar)
 
 app.mount('#app')
