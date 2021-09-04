@@ -3,8 +3,8 @@
     <div class="bg-white m-4 shadow-2" style="border-radius: 25px">
       <div class="bg-white m-4">
         <div class="text-right">
-          <Button label="Create Candidate" icon="pi pi-plus" class="p-button-info p-button-lg mt-4 mr-4"/>
-          <Button label="Print" class="p-button-outlined p-button-secondary p-button-lg"/>
+          <Button label="Create Candidate" icon="pi pi-plus" class="p-button-info mt-4 mr-2 custom-button-create"/>
+          <Button label="Print" class="p-button-outlined p-button-secondary custom-button-print"/>
         </div>
       </div>
       <div class="bg-white m-4">
@@ -35,5 +35,12 @@ export default {
 </script>
 
 <style scoped>
-
+@media only screen and (max-width: 400px) {
+  .custom-button-create{
+    font-size: 12px;
+  }
+  .custom-button-print{
+    font-size: 12px;
+  }
+}
 </style>

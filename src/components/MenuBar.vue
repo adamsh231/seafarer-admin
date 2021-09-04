@@ -70,7 +70,7 @@
     </div>
   </Sidebar>
 
-  <div class="grid h-screen m-0 p-0 custom-admin overflow-y-hidden">
+  <div class="grid h-screen m-0 p-0 custom-admin overflow-hidden">
 
     <!--  Sidebar  -->
     <div class="col-fixed custom-sidebar">
@@ -138,7 +138,7 @@
     </div>
     <!-- --------- -->
 
-    <div class="col p-0">
+    <div class="col p-0 overflow-x-auto">
 
       <!--  Navbar  -->
       <div class="custom-navbar">
@@ -229,7 +229,7 @@ export default {
   }
 }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 800px) {
   .custom-sidebar {
     display: none !important;
   }
