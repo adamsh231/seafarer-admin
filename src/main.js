@@ -18,6 +18,9 @@ import Button from 'primevue/button';
 import Divider from 'primevue/divider';
 import Avatar from 'primevue/avatar';
 import Sidebar from 'primevue/sidebar';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import Toolbar from "primevue/toolbar";
 // -------------------- //
 
 const app = createApp(App)
@@ -32,5 +35,8 @@ app.component('Button', Button)
 app.component('Divider', Divider)
 app.component('Avatar', Avatar)
 app.component('Sidebar', Sidebar)
+app.component('DataTable', DataTable)
+app.component('Column', Column)
+app.component('Toolbar', Toolbar)
 
 app.mount('#app')

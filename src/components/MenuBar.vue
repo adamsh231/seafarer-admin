@@ -70,7 +70,7 @@
     </div>
   </Sidebar>
 
-  <div class="grid h-screen m-0 p-0 custom-admin">
+  <div class="grid h-screen m-0 p-0 custom-admin overflow-y-hidden">
 
     <!--  Sidebar  -->
     <div class="col-fixed custom-sidebar">
@@ -155,7 +155,7 @@
       <!-- --------- -->
 
       <!--  Content  -->
-      <div class="custom-content">
+      <div class="custom-content overflow-y-auto">
         <slot name="content"></slot>
       </div>
       <!-- --------- -->
@@ -229,7 +229,7 @@ export default {
   }
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 780px) {
   .custom-sidebar {
     display: none !important;
   }
@@ -286,6 +286,7 @@ export default {
 }
 
 .custom-content {
+  height: calc(100vh - 70px);
   background-color: #eff5f7;
 }
 

@@ -1,10 +1,10 @@
 <template>
   <div v-if="isSignedIn">
-    <Dashboard>
+    <MenuBar>
       <template v-slot:content>
         <router-view/>
       </template>
-    </Dashboard>
+    </MenuBar>
   </div>
   <div v-else>
     <router-view/>
@@ -16,12 +16,12 @@
 </style>
 
 <script>
-import Dashboard from "./components/Dashboard";
+import MenuBar from "./components/MenuBar";
 
 export default {
   name: "App",
   components: {
-    Dashboard
+    MenuBar
   },
   data() {
     return {
