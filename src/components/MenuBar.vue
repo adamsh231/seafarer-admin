@@ -10,7 +10,7 @@
     <div class="w-full mt-3 mb-5 text-center">
       <img src="../assets/logo_web.png" class="custom-logo"/>
     </div>
-    <div class="grid align-items-center mx-4 text-gray-600 pointer custom-sidebar-menu custom-sidebar-menu-active shadow-2">
+    <div :class="`grid align-items-center mx-4 text-gray-600 custom-sidebar-menu ${isActiveSidebar('dashboard')}`" @click="changeActiveSidebar('dashboard')">
       <div class="col text-center">
         <i class="pi pi-th-large text-xl custom-icon"></i>
       </div>
@@ -19,7 +19,7 @@
       </div>
     </div>
     <Divider class="mb-4"/>
-    <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+    <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('candidates')}`" @click="changeActiveSidebar('candidates')">
       <div class="col text-center">
         <i class="pi pi-user text-xl custom-icon"></i>
       </div>
@@ -27,7 +27,7 @@
         <p class="my-0 custom-text-p">Candidates</p>
       </div>
     </div>
-    <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+    <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('employees')}`" @click="changeActiveSidebar('employees')">
       <div class="col text-center">
         <i class="pi pi-id-card text-xl custom-icon"></i>
       </div>
@@ -35,7 +35,7 @@
         <p class="my-0 custom-text-p">Employees</p>
       </div>
     </div>
-    <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+    <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('standby')}`" @click="changeActiveSidebar('standby')">
       <div class="col text-center">
         <i class="pi pi-calendar-times text-xl custom-icon"></i>
       </div>
@@ -43,7 +43,7 @@
         <p class="my-0 custom-text-p">Standby</p>
       </div>
     </div>
-    <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+    <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('reports')}`" @click="changeActiveSidebar('reports')">
       <div class="col text-center">
         <i class="pi pi-chart-line text-xl custom-icon"></i>
       </div>
@@ -52,7 +52,7 @@
       </div>
     </div>
     <Divider class="mb-4"/>
-    <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+    <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('settings')}`" @click="changeActiveSidebar('settings')">
       <div class="col text-center">
         <i class="pi pi-cog text-xl custom-icon"></i>
       </div>
@@ -60,7 +60,7 @@
         <p class="my-0 custom-text-p">Settings</p>
       </div>
     </div>
-    <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+    <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer" @click="signOut">
       <div class="col text-center custom-icon">
         <i class="pi pi-sign-out text-xl"></i>
       </div>
@@ -77,7 +77,7 @@
       <div class="w-full mt-3 mb-5 text-center">
         <img src="../assets/logo_web.png" class="custom-logo"/>
       </div>
-      <div class="grid align-items-center mx-4 text-gray-600 pointer custom-sidebar-menu custom-sidebar-menu-active shadow-2">
+      <div :class="`grid align-items-center mx-4 text-gray-600 custom-sidebar-menu ${isActiveSidebar('dashboard')}`" @click="changeActiveSidebar('dashboard')">
         <div class="col text-center">
           <i class="pi pi-th-large text-xl custom-icon"></i>
         </div>
@@ -86,7 +86,7 @@
         </div>
       </div>
       <Divider class="mb-4"/>
-      <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('candidates')}`" @click="changeActiveSidebar('candidates')">
         <div class="col text-center">
           <i class="pi pi-user text-xl custom-icon"></i>
         </div>
@@ -94,7 +94,7 @@
           <p class="my-0 custom-text-p">Candidates</p>
         </div>
       </div>
-      <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('employees')}`" @click="changeActiveSidebar('employees')">
         <div class="col text-center">
           <i class="pi pi-id-card text-xl custom-icon"></i>
         </div>
@@ -102,7 +102,7 @@
           <p class="my-0 custom-text-p">Employees</p>
         </div>
       </div>
-      <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('standby')}`" @click="changeActiveSidebar('standby')">
         <div class="col text-center">
           <i class="pi pi-calendar-times text-xl custom-icon"></i>
         </div>
@@ -110,7 +110,7 @@
           <p class="my-0 custom-text-p">Standby</p>
         </div>
       </div>
-      <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('reports')}`" @click="changeActiveSidebar('reports')">
         <div class="col text-center">
           <i class="pi pi-chart-line text-xl custom-icon"></i>
         </div>
@@ -119,7 +119,7 @@
         </div>
       </div>
       <Divider class="mb-4"/>
-      <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('settings')}`" @click="changeActiveSidebar('settings')">
         <div class="col text-center">
           <i class="pi pi-cog text-xl custom-icon"></i>
         </div>
@@ -127,7 +127,7 @@
           <p class="my-0 custom-text-p">Settings</p>
         </div>
       </div>
-      <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer">
+      <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer" @click="signOut">
         <div class="col text-center custom-icon">
           <i class="pi pi-sign-out text-xl"></i>
         </div>
@@ -171,6 +171,28 @@ export default {
   data() {
     return {
       isShowSidebar: false
+    }
+  },
+  computed: {
+    activeSidebar() {
+      return this.$store.state.activeSidebar
+    }
+  },
+  methods: {
+    isActiveSidebar(name) {
+      if (name === this.activeSidebar) {
+        return "custom-sidebar-menu-active shadow-2"
+      } else {
+        return "cursor-pointer"
+      }
+    },
+    changeActiveSidebar(name){
+      this.$router.push(name)
+      this.isShowSidebar = false
+    },
+    signOut(){
+      this.$store.commit('signOut')
+      this.$router.push('login')
     }
   }
 }

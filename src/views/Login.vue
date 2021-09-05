@@ -29,7 +29,7 @@
 
           <div class="mx-4 custom-form-margin">
             <div>
-              <Button label="Sign in" class="w-full h-3rem text-xl custom-rounded"/>
+              <Button label="Sign in" class="w-full h-3rem text-xl custom-rounded" @click="signIn"/>
             </div>
           </div>
 
@@ -51,6 +51,12 @@ export default {
   name: "Login",
   components: {
     Card
+  },
+  methods: {
+    signIn(){
+      this.$store.commit('signIn')
+      this.$router.push('dashboard')
+    }
   }
 }
 </script>

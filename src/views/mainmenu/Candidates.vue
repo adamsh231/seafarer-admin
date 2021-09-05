@@ -23,6 +23,9 @@
 <script>
 export default {
   name: "Candidates",
+  mounted() {
+    this.$store.commit('changeActiveSidebar', 'candidates')
+  },
   data() {
     return {
       candidates: [

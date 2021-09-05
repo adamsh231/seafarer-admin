@@ -25,7 +25,11 @@ export default {
   },
   data() {
     return {
-      isSignedIn: true
+    }
+  },
+  computed: {
+    isSignedIn(){
+      return this.$store.state.isSignedIn
     }
   }
 }
