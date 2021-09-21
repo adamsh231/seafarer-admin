@@ -1,4 +1,5 @@
 <template>
+  <Toast />
   <div v-if="isSignedIn">
     <MenuBar>
       <template v-slot:content>

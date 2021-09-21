@@ -16,13 +16,13 @@
             <div class="mb-3">
                 <span class="p-input-icon-left w-full">
                   <i class="pi pi-envelope ml-3 custom-icon"/>
-                  <InputText type="text" class="w-full h-3rem custom-rounded" placeholder="Enter your email"/>
+                  <InputText type="text" v-model="email" class="w-full h-3rem custom-rounded" placeholder="Enter your email"/>
                 </span>
             </div>
             <div class="mb-3">
                 <span class="p-input-icon-left w-full">
                   <i class="pi pi-lock ml-3 custom-icon"/>
-                  <InputText type="password" class="w-full h-3rem custom-rounded" placeholder="Enter your password"/>
+                  <InputText type="password" v-model="password" class="w-full h-3rem custom-rounded" placeholder="Enter your password"/>
                 </span>
             </div>
           </div>
@@ -46,16 +46,45 @@
 
 <script>
 import Card from "primevue/card";
+import axios from "axios";
 
 export default {
   name: "Login",
   components: {
     Card
   },
+  data() {
+    return {
+      email: "",
+      password: "",
+    }
+  },
   methods: {
-    signIn(){
-      this.$store.commit('signIn')
-      this.$router.push('dashboard')
+    signIn() {
+
+      // init url
+      let url = `${process.env.VUE_APP_API_AUTH_ADMIN}/login`
+      let data = {
+        email: this.email,
+        password: this.password
+      }
+
+      // send api
+      let context = this
+      axios.post(url, data).then(function (response) {
+        context.$toast.add({severity: 'success', summary: response.data.message, detail: response.data.data.token, life: 1000})
+      }).catch(function (error) {
+        try {
+          if (error.response.data.message.includes("record not") || error.response.data.message.includes("credential")) {
+            context.$toast.add({severity: 'error', summary: "Error", detail: "Credential is not match", life: 1000})
+          } else {
+            context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
+          }
+        } catch (e) {
+          context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
+        }
+      })
+
     }
   }
 }
@@ -74,12 +103,12 @@ export default {
   color: #344a6b;
 }
 
-.custom-container{
+.custom-container {
   width: 600px;
 }
 
 @media only screen and (max-width: 600px) {
-  .custom-container{
+  .custom-container {
     width: 90%;
   }
 
@@ -91,7 +120,7 @@ export default {
     padding-left: 2.7rem;
   }
 
-  .custom-form-margin{
+  .custom-form-margin {
     margin-left: 1px !important;
     margin-right: 1px !important;
   }

@@ -3,6 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+// ----------- Axios ------------ //
+import axios from 'axios'
+import VueAxios from 'vue-axios';
+// ------------------------------ //
+
 // ----- PrimeVue ----- //
 import PrimeVue from 'primevue/config';
 
@@ -21,12 +26,16 @@ import Sidebar from 'primevue/sidebar';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Toolbar from "primevue/toolbar";
+import ToastService from "primevue/toastservice";
+import Toast from "primevue/toast";
 // -------------------- //
 
 const app = createApp(App)
 
 app.use(store)
 app.use(router)
+app.use(VueAxios, axios)
+app.use(ToastService)
 
 app.use(PrimeVue)
 app.component('Card', Card)
@@ -38,5 +47,6 @@ app.component('Sidebar', Sidebar)
 app.component('DataTable', DataTable)
 app.component('Column', Column)
 app.component('Toolbar', Toolbar)
+app.component('Toast', Toast)
 
 app.mount('#app')
