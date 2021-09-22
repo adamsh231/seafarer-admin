@@ -5,6 +5,8 @@ export default createStore({
     isSignedIn: false,
     activeSidebar: ""
   },
+  getters: {
+  },
   mutations: {
     // state, payload => payload = {x,y,z}
     changeActiveSidebar(state, name){
@@ -15,7 +17,8 @@ export default createStore({
     },
     signOut(state){
       state.isSignedIn = false
-    }
+      this.deleteCookie('token')
+    },
   },
   actions: {
   },

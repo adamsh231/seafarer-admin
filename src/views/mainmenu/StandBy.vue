@@ -5,6 +5,9 @@ Standby
 <script>
 export default {
   name: "StandBy",
+  created() {
+    this.isTokenExistAndValid(true)
+  },
   mounted() {
     this.$store.commit('changeActiveSidebar', 'standby')
   },

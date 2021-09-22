@@ -8,7 +8,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios';
 // ------------------------------ //
 
-// ----- PrimeVue ----- //
+// --------- Prime Vue ---------- //
 import PrimeVue from 'primevue/config';
 
 import 'primevue/resources/themes/saga-blue/theme.css'       //theme
@@ -28,15 +28,22 @@ import Column from 'primevue/column';
 import Toolbar from "primevue/toolbar";
 import ToastService from "primevue/toastservice";
 import Toast from "primevue/toast";
-// -------------------- //
+// ------------------------------ //
+
+// ----------- Custom ------------ //
+import globalMixin from './custom/global'
+// ------------------------------ //
+
+// ========================== Application ============================== //
 
 const app = createApp(App)
 
 app.use(store)
 app.use(router)
 app.use(VueAxios, axios)
-app.use(ToastService)
 
+// --------- Prime Vue ---------- //
+app.use(ToastService)
 app.use(PrimeVue)
 app.component('Card', Card)
 app.component('InputText', InputText)
@@ -48,5 +55,9 @@ app.component('DataTable', DataTable)
 app.component('Column', Column)
 app.component('Toolbar', Toolbar)
 app.component('Toast', Toast)
+// ------------------------------ //
+
+app.mixin(globalMixin)
 
 app.mount('#app')
+// ===================================================================== //

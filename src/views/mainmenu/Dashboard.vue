@@ -5,6 +5,9 @@
 <script>
 export default {
   name: "Dashboard",
+  created() {
+    this.isTokenExistAndValid(true)
+  },
   mounted() {
     this.$store.commit('changeActiveSidebar', 'dashboard')
   },

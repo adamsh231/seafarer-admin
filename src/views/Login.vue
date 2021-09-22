@@ -16,20 +16,20 @@
             <div class="mb-3">
                 <span class="p-input-icon-left w-full">
                   <i class="pi pi-envelope ml-3 custom-icon"/>
-                  <InputText type="text" v-model="email" class="w-full h-3rem custom-rounded" placeholder="Enter your email"/>
+                  <InputText type="text" id="email" v-model="email" class="w-full h-3rem custom-rounded" placeholder="Enter your email"/>
                 </span>
             </div>
             <div class="mb-3">
                 <span class="p-input-icon-left w-full">
                   <i class="pi pi-lock ml-3 custom-icon"/>
-                  <InputText type="password" v-model="password" class="w-full h-3rem custom-rounded" placeholder="Enter your password"/>
+                  <InputText type="password" id="password" v-model="password" class="w-full h-3rem custom-rounded" placeholder="Enter your password"/>
                 </span>
             </div>
           </div>
 
           <div class="mx-4 custom-form-margin">
             <div>
-              <Button label="Sign in" class="w-full h-3rem text-xl custom-rounded" @click="signIn"/>
+              <Button label="Sign in" class="w-full h-3rem text-xl custom-rounded" @click="signIn" :disabled="disabled"/>
             </div>
           </div>
 
@@ -53,37 +53,76 @@ export default {
   components: {
     Card
   },
+  created() {
+    this.isTokenExistAndValid(false)
+  },
   data() {
     return {
       email: "",
       password: "",
+      disabled: false
     }
   },
   methods: {
-    signIn() {
+    validate() {
+      //init
+      const invalid = "p-invalid"
+      let field = ["email", "password"]
+      let isValid = true
 
-      // init url
-      let url = `${process.env.VUE_APP_API_AUTH_ADMIN}/login`
-      let data = {
-        email: this.email,
-        password: this.password
-      }
-
-      // send api
-      let context = this
-      axios.post(url, data).then(function (response) {
-        context.$toast.add({severity: 'success', summary: response.data.message, detail: response.data.data.token, life: 1000})
-      }).catch(function (error) {
-        try {
-          if (error.response.data.message.includes("record not") || error.response.data.message.includes("credential")) {
-            context.$toast.add({severity: 'error', summary: "Error", detail: "Credential is not match", life: 1000})
-          } else {
-            context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
-          }
-        } catch (e) {
-          context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
+      // add class invalid
+      field.forEach(value => {
+        if (document.getElementById(value).value === "") {
+          isValid = false
+          document.getElementById(value).classList.add(invalid)
         }
       })
+
+      return isValid
+    },
+    signIn() {
+
+      // validate form
+      let isValid = this.validate()
+      const context = this
+
+      if (isValid) {
+
+        // disable button login
+        context.disabled = true
+
+        // init url
+        let url = `${process.env.VUE_APP_API_AUTH_ADMIN}/login`
+        let data = {
+          email: this.email,
+          password: this.password
+        }
+
+        // send api
+        axios.post(url, data).then(function (response) {
+          context.$toast.add({severity: 'success', summary: response.data.message, detail: "success", life: 1000})
+          context.setCookie("token", response.data.data.token)
+          context.$store.commit('signIn')
+          context.$router.replace("/dashboard")
+        }).catch(function (error) {
+          try {
+            if (error.response.data.message.includes("record not") || error.response.data.message.includes("credential")) {
+              context.$toast.add({severity: 'error', summary: "Error", detail: "Credential is not match", life: 1000})
+            } else {
+              context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
+            }
+          } catch (e) {
+            context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
+          }
+        }).then(function () {
+
+          // enable button login
+          context.disabled = false
+
+        })
+      } else {
+        context.$toast.add({severity: 'warn', summary: "Warning", detail: "Please, check form condition", life: 1000})
+      }
 
     }
   }

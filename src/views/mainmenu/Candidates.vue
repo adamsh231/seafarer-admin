@@ -23,6 +23,9 @@
 <script>
 export default {
   name: "Candidates",
+  created() {
+    this.isTokenExistAndValid(true)
+  },
   mounted() {
     this.$store.commit('changeActiveSidebar', 'candidates')
   },
