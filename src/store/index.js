@@ -17,7 +17,7 @@ export default createStore({
     },
     signOut(state){
       state.isSignedIn = false
-      this.deleteCookie('token')
+      document.cookie = `token=;expires=Thu, 01 Jan 1970 00:00:01 GMT` // delete token
     },
   },
   actions: {
