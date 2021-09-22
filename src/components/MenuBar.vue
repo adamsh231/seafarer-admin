@@ -35,20 +35,20 @@
         <p class="my-0 custom-text-p">Employees</p>
       </div>
     </div>
-    <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('standby')}`" @click="changeActiveSidebar('standby')">
+    <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('letters')}`" @click="changeActiveSidebar('letters')">
       <div class="col text-center">
         <i class="pi pi-calendar-times text-xl custom-icon"></i>
       </div>
       <div class="col-fixed custom-text-icon">
-        <p class="my-0 custom-text-p">Standby</p>
+        <p class="my-0 custom-text-p">Letters</p>
       </div>
     </div>
-    <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('reports')}`" @click="changeActiveSidebar('reports')">
+    <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('standby')}`" @click="changeActiveSidebar('standby')">
       <div class="col text-center">
         <i class="pi pi-chart-line text-xl custom-icon"></i>
       </div>
       <div class="col-fixed custom-text-icon">
-        <p class="my-0 custom-text-p">Reports</p>
+        <p class="my-0 custom-text-p">Standby</p>
       </div>
     </div>
     <Divider class="mb-4"/>
@@ -102,20 +102,20 @@
           <p class="my-0 custom-text-p">Employees</p>
         </div>
       </div>
-      <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('standby')}`" @click="changeActiveSidebar('standby')">
+      <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('letters')}`" @click="changeActiveSidebar('letters')">
         <div class="col text-center">
           <i class="pi pi-calendar-times text-xl custom-icon"></i>
         </div>
         <div class="col-fixed custom-text-icon">
-          <p class="my-0 custom-text-p">Standby</p>
+          <p class="my-0 custom-text-p">Letters</p>
         </div>
       </div>
-      <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('reports')}`" @click="changeActiveSidebar('reports')">
+      <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('standby')}`" @click="changeActiveSidebar('standby')">
         <div class="col text-center">
           <i class="pi pi-chart-line text-xl custom-icon"></i>
         </div>
         <div class="col-fixed custom-text-icon">
-          <p class="my-0 custom-text-p">Reports</p>
+          <p class="my-0 custom-text-p">Standby</p>
         </div>
       </div>
       <Divider class="mb-4"/>
@@ -148,7 +148,7 @@
           </div>
           <div class="col text-right my-auto">
             <Avatar icon="pi pi-user" shape="circle" class="mr-2 custom-user-icon"/>
-            <h3 class="inline-block my-auto custom-user-name">Adam Syarif Hidayatullah</h3>
+            <h3 class="inline-block my-auto custom-user-name">{{ currentAdminName }}</h3>
           </div>
         </div>
       </div>
@@ -176,6 +176,9 @@ export default {
   computed: {
     activeSidebar() {
       return this.$store.state.activeSidebar
+    },
+    currentAdminName(){
+      return this.$store.state.currentAdminName
     }
   },
   methods: {
@@ -201,6 +204,10 @@ export default {
 <style scoped lang="scss">
 * {
   //border: 1px solid;
+}
+
+.custom-user-name {
+  text-transform: capitalize;
 }
 
 @media only screen and (min-height: 950px) {

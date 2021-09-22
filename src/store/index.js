@@ -3,7 +3,8 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     isSignedIn: false,
-    activeSidebar: ""
+    activeSidebar: "",
+    currentAdminName: ""
   },
   getters: {
   },
@@ -18,6 +19,9 @@ export default createStore({
     signOut(state){
       state.isSignedIn = false
       document.cookie = `token=;expires=Thu, 01 Jan 1970 00:00:01 GMT` // delete token
+    },
+    changeAdminName(state, name){
+      state.currentAdminName = name
     },
   },
   actions: {

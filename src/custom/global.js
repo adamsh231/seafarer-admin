@@ -29,6 +29,7 @@ export default {
                 if (navigator.onLine) {
                     axios.get(url, header).then(function (response) {
                         context.$store.commit('signIn')
+                        context.$store.commit('changeAdminName', response.data.data.name.toLowerCase())
                         if (!isFromTokenArea) {
                             context.$router.replace('/dashboard')
                         }

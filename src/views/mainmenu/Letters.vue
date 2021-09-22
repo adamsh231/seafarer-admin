@@ -1,15 +1,15 @@
 <template>
-Reports
+Letters
 </template>
 
 <script>
 export default {
-  name: "Reports",
+  name: "Letters",
   created() {
     this.isTokenExistAndValid(true)
   },
   mounted() {
-    this.$store.commit('changeActiveSidebar', 'reports')
+    this.$store.commit('changeActiveSidebar', 'letters')
   },
 }
 </script>

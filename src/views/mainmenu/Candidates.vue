@@ -4,7 +4,6 @@
       <div class="bg-white m-4">
         <div class="text-right">
           <Button label="Create Candidate" icon="pi pi-plus" class="p-button-info mt-4 mr-2 custom-button-create"/>
-          <Button label="Print" class="p-button-outlined p-button-secondary custom-button-print"/>
         </div>
       </div>
       <div class="bg-white m-4">

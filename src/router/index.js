@@ -4,7 +4,7 @@ import Dashboard from "../views/mainmenu/Dashboard";
 import Candidates from "../views/mainmenu/Candidates";
 import Employees from "../views/mainmenu/Employees";
 import StandBy from "../views/mainmenu/StandBy";
-import Reports from "../views/mainmenu/Reports";
+import Letters from "../views/mainmenu/Letters";
 import Settings from "../views/mainmenu/Settings";
 
 const routes = [
@@ -35,9 +35,9 @@ const routes = [
     component: StandBy
   },
   {
-    path: '/reports',
-    name: 'Reports',
-    component: Reports
+    path: '/letters',
+    name: 'Letters',
+    component: Letters
   },
   {
     path: '/settings',
