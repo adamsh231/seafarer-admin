@@ -1,9 +1,22 @@
 <template>
+  <Dialog header="Create Candidate" v-model:visible="isDisplayModalCreate" :style="{width: '50vw'}" :modal="true">
+    <div>
+      <span class="p-float-label">
+        <InputText id="username" type="text" v-model="value"/>
+        <label for="username">Username</label>
+      </span>
+    </div>
+    <template v-slot:footer>
+      <Button label="Cancel" icon="pi pi-times" @click="isDisplayModalCreate = false" class="p-button-text"/>
+      <Button label="Create" icon="pi pi-check" @click="isDisplayModalCreate = false" autofocus/>
+    </template>
+  </Dialog>
   <div class="mt-5 mb-6">
     <div class="bg-white m-4 shadow-2" style="border-radius: 25px">
       <div class="bg-white m-4">
         <div class="text-right">
-          <Button label="Create Candidate" icon="pi pi-plus" class="p-button-info mt-4 mr-2 custom-button-create"/>
+          <Button label="Create Candidate" icon="pi pi-plus" class="p-button-info mt-4 mr-2 custom-button-create"
+                  @click="isDisplayModalCreate = true"/>
         </div>
       </div>
       <div class="bg-white m-4">
@@ -30,6 +43,7 @@ export default {
   },
   data() {
     return {
+      isDisplayModalCreate: false,
       candidates: [
         {id: "54e88841-ea0a-444e-8daf-9f26e529405a", first: "Adam", last: "Hidayatullah"},
         {id: "54e88841-ea0a-444e-8daf-9f26e529405b", first: "Raycall", last: "Arditama"},
@@ -41,10 +55,11 @@ export default {
 
 <style scoped>
 @media only screen and (max-width: 400px) {
-  .custom-button-create{
+  .custom-button-create {
     font-size: 12px;
   }
-  .custom-button-print{
+
+  .custom-button-print {
     font-size: 12px;
   }
 }

@@ -37,7 +37,7 @@
     </div>
     <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('letters')}`" @click="changeActiveSidebar('letters')">
       <div class="col text-center">
-        <i class="pi pi-calendar-times text-xl custom-icon"></i>
+        <i class="pi pi-file text-xl custom-icon"></i>
       </div>
       <div class="col-fixed custom-text-icon">
         <p class="my-0 custom-text-p">Letters</p>
@@ -45,7 +45,7 @@
     </div>
     <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('standby')}`" @click="changeActiveSidebar('standby')">
       <div class="col text-center">
-        <i class="pi pi-chart-line text-xl custom-icon"></i>
+        <i class="pi pi-briefcase text-xl custom-icon"></i>
       </div>
       <div class="col-fixed custom-text-icon">
         <p class="my-0 custom-text-p">Standby</p>
@@ -104,7 +104,7 @@
       </div>
       <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('letters')}`" @click="changeActiveSidebar('letters')">
         <div class="col text-center">
-          <i class="pi pi-calendar-times text-xl custom-icon"></i>
+          <i class="pi pi-file text-xl custom-icon"></i>
         </div>
         <div class="col-fixed custom-text-icon">
           <p class="my-0 custom-text-p">Letters</p>
@@ -112,7 +112,7 @@
       </div>
       <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('standby')}`" @click="changeActiveSidebar('standby')">
         <div class="col text-center">
-          <i class="pi pi-chart-line text-xl custom-icon"></i>
+          <i class="pi pi-briefcase text-xl custom-icon"></i>
         </div>
         <div class="col-fixed custom-text-icon">
           <p class="my-0 custom-text-p">Standby</p>
