@@ -14,10 +14,13 @@ export default {
             document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:01 GMT`
         },
         isTokenExistAndValid(isFromTokenArea = false) {
+
+            // init this
+            const context = this
+
             if (this.getCookie('token') !== undefined) {
 
                 // init url
-                const context = this
                 let url = `${process.env.VUE_APP_API_AUTH_ADMIN}/current`
                 let header = {
                     headers: {
@@ -40,6 +43,10 @@ export default {
                     })
                 } else {
                     context.$toast.add({severity: 'warn', summary: "Warning", detail: "You are in offline mode !!", life: 5000})
+                }
+            } else {
+                if (isFromTokenArea) {
+                    context.$router.replace('/dashboard')
                 }
             }
         }
