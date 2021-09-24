@@ -46,7 +46,7 @@ export default {
                 }
             } else {
                 if (isFromTokenArea) {
-                    context.$router.replace('/dashboard')
+                    context.$router.replace('/')
                 }
             }
         }
