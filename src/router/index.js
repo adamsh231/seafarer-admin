@@ -6,6 +6,7 @@ import Employees from "../views/mainmenu/Employees";
 import StandBy from "../views/mainmenu/StandBy";
 import Letters from "../views/mainmenu/Letters";
 import Settings from "../views/mainmenu/Settings";
+import CreateCandidate from "../views/sidemenu/CreateCandidate";
 
 const routes = [
   {
@@ -43,6 +44,11 @@ const routes = [
     path: '/settings',
     name: 'Settings',
     component: Settings
+  },
+  {
+    path: '/create-candidate',
+    name: 'CreateCandidate',
+    component: CreateCandidate
   }
 ]
 
