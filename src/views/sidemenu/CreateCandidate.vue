@@ -14,8 +14,8 @@
           <template v-slot:value="slotProps">
             <div class="country-item country-item-value" v-if="slotProps.value">
               <div class="grid m-auto">
-                <div class="col-1">
-                  <img :src="`https://www.countryflags.io/${slotProps.value.code}/flat/64.png`" width="40">
+                <div class="col m-auto">
+                  <div>{{ slotProps.value.id }}</div>
                 </div>
                 <div class="col m-auto">
                   <div>{{ slotProps.value.name }}</div>
@@ -29,8 +29,8 @@
           <template v-slot:option="slotProps">
             <div class="country-item">
               <div class="grid m-auto">
-                <div class="col-1">
-                  <img :src="`https://www.countryflags.io/${slotProps.option.code}/flat/64.png`" width="40">
+                <div class="col m-auto">
+                  <div>{{ slotProps.option.id }}</div>
                 </div>
                 <div class="col m-auto">
                   <div>{{ slotProps.option.name }}</div>
@@ -45,6 +45,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "CreateCandidate",
   created() {
@@ -52,22 +54,31 @@ export default {
   },
   mounted() {
     this.$store.commit('changeActiveSidebar', 'create-candidate')
+    this.listCandidates()
   },
   data() {
     return {
       selectedCountry: null,
-      countries: [
-        {name: 'Australia', code: 'AU'},
-        {name: 'Brazil', code: 'BR'},
-        {name: 'China', code: 'CN'},
-        {name: 'Egypt', code: 'EG'},
-        {name: 'France', code: 'FR'},
-        {name: 'Germany', code: 'DE'},
-        {name: 'India', code: 'IN'},
-        {name: 'Japan', code: 'JP'},
-        {name: 'Spain', code: 'ES'},
-        {name: 'United States', code: 'US'}
-      ],
+      countries: [],
+    }
+  },
+  methods: {
+    listCandidates(){
+      // init url
+      const context = this
+      let url = `${process.env.VUE_APP_API_USER}/filter`
+      let header = {
+        headers: {
+          Authorization: `Bearer ${context.getCookie('token')}`,
+        }
+      }
+
+      // send api
+      axios.get(url, header).then(function (response) {
+        context.countries.push(...response.data.data)
+      }).catch(function (error) {
+        context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
+      })
     }
   }
 }
