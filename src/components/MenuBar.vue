@@ -52,14 +52,14 @@
       </div>
     </div>
     <Divider class="mb-4"/>
-    <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('settings')}`" @click="changeActiveSidebar('settings')">
+    <!--<div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('settings')}`" @click="changeActiveSidebar('settings')">
       <div class="col text-center">
         <i class="pi pi-cog text-xl custom-icon"></i>
       </div>
       <div class="col-fixed custom-text-icon">
         <p class="my-0 custom-text-p">Settings</p>
       </div>
-    </div>
+    </div>-->
     <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer" @click="signOut">
       <div class="col text-center custom-icon">
         <i class="pi pi-sign-out text-xl"></i>
@@ -119,14 +119,14 @@
         </div>
       </div>
       <Divider class="mb-4"/>
-      <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('settings')}`" @click="changeActiveSidebar('settings')">
+      <!--<div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('settings')}`" @click="changeActiveSidebar('settings')">
         <div class="col text-center">
           <i class="pi pi-cog text-xl custom-icon"></i>
         </div>
         <div class="col-fixed custom-text-icon">
           <p class="my-0 custom-text-p">Settings</p>
         </div>
-      </div>
+      </div>-->
       <div class="grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu cursor-pointer" @click="signOut">
         <div class="col text-center custom-icon">
           <i class="pi pi-sign-out text-xl"></i>

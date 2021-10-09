@@ -38,7 +38,7 @@ export default {
     listCandidates(){
       // init url
       const context = this
-      let url = `${process.env.VUE_APP_API_USER}/available/employee/filter`
+      let url = `${process.env.VUE_APP_API_RECRUITMENT}/candidate/filter`
       let header = {
         headers: {
           Authorization: `Bearer ${context.getCookie('token')}`,
@@ -47,7 +47,7 @@ export default {
 
       // send api
       axios.get(url, header).then(function (response) {
-        context.candidates.push(...response.data.data)
+        context.candidates = response.data.data
       }).catch(function (error) {
         context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
       })
@@ -59,10 +59,6 @@ export default {
 <style scoped>
 @media only screen and (max-width: 400px) {
   .custom-button-create {
-    font-size: 12px;
-  }
-
-  .custom-button-print {
     font-size: 12px;
   }
 }

@@ -5,7 +5,7 @@
       <div class="bg-white m-4">
         <div class="text-center">
           <div class="h-1rem"/>
-          <h2 class="text-gray-800">Create New Candidate</h2>
+          <h2 class="text-gray-800">Create New Employee</h2>
         </div>
         <hr>
       </div>
@@ -13,17 +13,17 @@
       <div class="bg-white m-4">
 
         <div class="text-right mb-2">
-          <InputText style="width: 210px" v-model="search" @input="listCandidates" placeholder="Search candidate by name"/>
+          <InputText style="width: 210px" v-model="search" @input="listEmployees" placeholder="Search employee by name"/>
         </div>
 
         <div class="card shadow-2">
-          <DataTable :value="candidates" :scrollable="true" scrollHeight="200px">
+          <DataTable :value="employees" :scrollable="true" scrollHeight="200px">
             <Column field="email" header="Email"></Column>
             <Column field="name" header="Name"></Column>
             <Column style="width: 6rem">
               <template v-slot:body="slotProps">
                 <div class="m-auto">
-                  <Button icon="pi pi-check-circle" class="p-button-rounded p-button-success" @click="selectCandidate(slotProps.data.id)"/>
+                  <Button icon="pi pi-check-circle" class="p-button-rounded p-button-success" @click="selectEmployee(slotProps.data.id)"/>
                 </div>
               </template>
             </Column>
@@ -32,26 +32,20 @@
 
         <Divider class="h-1rem"/>
 
-        <div class="card shadow-2" v-if="selectedCandidate !== null">
+        <div class="card shadow-2" v-if="selectedEmployee !== null">
           <table class="w-full">
             <tr>
               <td class="w-30rem pl-4 py-3">Name</td>
-              <td>{{ selectedCandidate.name }}</td>
+              <td>{{ selectedEmployee.name }}</td>
             </tr>
             <tr>
               <td class="pl-4 py-3">Email</td>
-              <td>{{ selectedCandidate.email }}</td>
-            </tr>
-            <tr>
-              <td class="pl-4 py-3">Position</td>
-              <td>
-                <InputText id="position" type="text" v-model="position"/>
-              </td>
+              <td>{{ selectedEmployee.email }}</td>
             </tr>
             <tr>
               <td class="pl-4 py-3">Expected Salary (USD)</td>
               <td>
-                <InputText id="expected-salary" type="number" v-model="expectedSalary"/>
+                <InputText id="salary" type="number" v-model="salary"/>
               </td>
             </tr>
           </table>
@@ -59,7 +53,7 @@
           <Divider/>
 
           <div class="text-right">
-            <Button label="Create" class="p-button-raised p-button-rounded mb-3 mr-3" :disabled="disabled" @click="createCandidate"/>
+            <Button label="Create" class="p-button-raised p-button-rounded mb-3 mr-3" :disabled="disabled" @click="createEmployee"/>
           </div>
 
         </div>
@@ -75,21 +69,20 @@
 import axios from "axios";
 
 export default {
-  name: "CreateCandidate",
+  name: "CreateEmployee",
   created() {
     this.isTokenExistAndValid(true)
   },
   mounted() {
-    this.$store.commit('changeActiveSidebar', 'create-candidate')
-    this.listCandidates()
+    this.$store.commit('changeActiveSidebar', 'create-employee')
+    this.listEmployees()
   },
   data() {
     return {
-      selectedCandidate: null,
-      position: "",
-      expectedSalary: 0,
+      selectedEmployee: null,
+      salary: 0,
       search: "",
-      candidates: [],
+      employees: [],
       disabled: false,
     }
   },
@@ -97,7 +90,7 @@ export default {
     validate() {
       //init
       const invalid = "p-invalid"
-      let field = ["position", "expected-salary"]
+      let field = ["salary"]
       let isValid = true
 
       // add class invalid
@@ -110,10 +103,10 @@ export default {
 
       return isValid
     },
-    listCandidates() {
+    listEmployees() {
       // init url
       const context = this
-      let url = `${process.env.VUE_APP_API_USER}/available/candidate/filter?search=${this.search}&per_page=50` //todo: lazy scroll :(
+      let url = `${process.env.VUE_APP_API_USER}/available/employee/filter?search=${this.search}&per_page=50` //todo: lazy scroll :(
       let header = {
         headers: {
           Authorization: `Bearer ${context.getCookie('token')}`,
@@ -121,17 +114,17 @@ export default {
       }
       // send api
       axios.get(url, header).then(function (response) {
-        context.candidates = response.data.data
+        context.employees = response.data.data
       }).catch(function (error) {
         context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
       })
     },
-    selectCandidate(id) {
-      this.selectedCandidate = this.candidates.find(function (value) {
+    selectEmployee(id) {
+      this.selectedEmployee = this.employees.find(function (value) {
         return value.id === id
       })
     },
-    createCandidate() {
+    createEmployee() {
       // validate form
       let isValid = this.validate()
       const context = this
@@ -139,11 +132,10 @@ export default {
         // disable button login
         context.disabled = true
         // init url
-        let url = `${process.env.VUE_APP_API_RECRUITMENT}/candidate`
+        let url = `${process.env.VUE_APP_API_RECRUITMENT}/employee`
         let data = {
-          user_id: this.selectedCandidate.id,
-          expect_salary: parseFloat(this.expectedSalary),
-          position: this.position
+          user_id: this.selectedEmployee.id,
+          salary: parseFloat(this.salary),
         }
         let header = {
           headers: {
@@ -153,7 +145,7 @@ export default {
         // send api
         axios.post(url, data, header).then(function (response) {
           context.$toast.add({severity: 'success', summary: response.data.message, detail: "success", life: 1000})
-          context.$router.push("/candidates")
+          context.$router.push("/employees")
         }).catch(function (error) {
           context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
         }).then(function () {

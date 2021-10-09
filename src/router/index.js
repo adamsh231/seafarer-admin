@@ -7,6 +7,7 @@ import StandBy from "../views/mainmenu/StandBy";
 import Letters from "../views/mainmenu/Letters";
 import Settings from "../views/mainmenu/Settings";
 import CreateCandidate from "../views/sidemenu/CreateCandidate";
+import CreateEmployee from "../views/sidemenu/CreateEmployee";
 
 const routes = [
   {
@@ -15,11 +16,11 @@ const routes = [
     name: 'Login',
     component: Login
   },
-  // {
-  //   path: '/dashboard',
-  //   name: 'Dashboard',
-  //   component: Dashboard
-  // },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard
+  },
   {
     path: '/candidates',
     name: 'Candidates',
@@ -49,6 +50,11 @@ const routes = [
     path: '/create-candidate',
     name: 'CreateCandidate',
     component: CreateCandidate
+  },
+  {
+    path: '/create-employee',
+    name: 'CreateEmployee',
+    component: CreateEmployee
   }
 ]
 
