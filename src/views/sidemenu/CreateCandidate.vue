@@ -113,7 +113,7 @@ export default {
     listCandidates() {
       // init url
       const context = this
-      let url = `${process.env.VUE_APP_API_USER}/available/candidate/filter?search=${this.search}&per_page=100` //todo: lazy scroll :(
+      let url = `${process.env.VUE_APP_API_USER}/available/candidate/filter?search=${this.search}&per_page=50` //todo: lazy scroll :(
       let header = {
         headers: {
           Authorization: `Bearer ${context.getCookie('token')}`,
