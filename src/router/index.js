@@ -15,11 +15,11 @@ const routes = [
     name: 'Login',
     component: Login
   },
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: Dashboard
-  },
+  // {
+  //   path: '/dashboard',
+  //   name: 'Dashboard',
+  //   component: Dashboard
+  // },
   {
     path: '/candidates',
     name: 'Candidates',

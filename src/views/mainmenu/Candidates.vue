@@ -8,7 +8,7 @@
       </div>
       <div class="bg-white m-4">
         <DataTable :value="candidates" responsiveLayout="scroll">
-          <Column field="id" header="ID" style="width: 50%;"></Column>
+          <Column field="id" header="ID"></Column>
           <Column field="name" header="Name"></Column>
           <Column field="email" header="Email"></Column>
         </DataTable>

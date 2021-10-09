@@ -103,7 +103,7 @@ export default {
           context.$toast.add({severity: 'success', summary: response.data.message, detail: "success", life: 1000})
           context.setCookie("token", response.data.data.token)
           context.$store.commit('signIn')
-          context.$router.replace("/dashboard")
+          context.$router.replace("/candidates")
         }).catch(function (error) {
           try {
             if (error.response.data.message.includes("record not") || error.response.data.message.includes("credential")) {

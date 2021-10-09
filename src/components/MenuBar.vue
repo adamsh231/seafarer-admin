@@ -10,7 +10,7 @@
     <div class="w-full mt-3 mb-5 text-center">
       <img src="../assets/logo_web.png" class="custom-logo"/>
     </div>
-    <div :class="`grid align-items-center mx-4 text-gray-600 custom-sidebar-menu ${isActiveSidebar('dashboard')}`" @click="changeActiveSidebar('dashboard')">
+    <!--<div :class="`grid align-items-center mx-4 text-gray-600 custom-sidebar-menu ${isActiveSidebar('dashboard')}`" @click="changeActiveSidebar('dashboard')">
       <div class="col text-center">
         <i class="pi pi-th-large text-xl custom-icon"></i>
       </div>
@@ -18,7 +18,7 @@
         <p class="my-0 custom-text-p">Dashboard</p>
       </div>
     </div>
-    <Divider class="mb-4"/>
+    <Divider class="mb-4"/>-->
     <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('candidates')}`" @click="changeActiveSidebar('candidates')">
       <div class="col text-center">
         <i class="pi pi-user text-xl custom-icon"></i>
@@ -77,7 +77,7 @@
       <div class="w-full mt-3 mb-5 text-center">
         <img src="../assets/logo_web.png" class="custom-logo"/>
       </div>
-      <div :class="`grid align-items-center mx-4 text-gray-600 custom-sidebar-menu ${isActiveSidebar('dashboard')}`" @click="changeActiveSidebar('dashboard')">
+      <!--<div :class="`grid align-items-center mx-4 text-gray-600 custom-sidebar-menu ${isActiveSidebar('dashboard')}`" @click="changeActiveSidebar('dashboard')">
         <div class="col text-center">
           <i class="pi pi-th-large text-xl custom-icon"></i>
         </div>
@@ -85,7 +85,7 @@
           <p class="my-0 custom-text-p">Dashboard</p>
         </div>
       </div>
-      <Divider class="mb-4"/>
+      <Divider class="mb-4"/>-->
       <div :class="`grid align-items-center mx-4 mb-2 text-gray-600 custom-sidebar-menu ${isActiveSidebar('candidates')}`" @click="changeActiveSidebar('candidates')">
         <div class="col text-center">
           <i class="pi pi-user text-xl custom-icon"></i>

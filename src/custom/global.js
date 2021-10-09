@@ -34,7 +34,7 @@ export default {
                         context.$store.commit('signIn')
                         context.$store.commit('changeAdminName', response.data.data.name.toLowerCase())
                         if (!isFromTokenArea) {
-                            context.$router.replace('/dashboard')
+                            context.$router.replace('/candidates')
                         }
                     }).catch(function (error) {
                         context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})

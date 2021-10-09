@@ -1,6 +1,7 @@
 <template>
   <div class="mt-5 mb-6">
     <div class="bg-white m-4 shadow-2" style="border-radius: 25px">
+
       <div class="bg-white m-4">
         <div class="text-center">
           <div class="h-1rem"/>
@@ -8,37 +9,63 @@
         </div>
         <hr>
       </div>
+
       <div class="bg-white m-4">
-        <Dropdown v-model="selectedCandidate" :options="candidates" optionLabel="name" :filter="true" placeholder="Select Candidate" :showClear="true"
-                  class="mb-5 w-full">
-          <template v-slot:value="slotProps">
-            <div class="country-item country-item-value" v-if="slotProps.value">
-              <div class="grid m-auto">
-                <div class="col m-auto">
-                  <div>{{ slotProps.value.id }}</div>
+
+        <div class="text-right mb-2">
+          <InputText style="width: 210px" v-model="search" @input="listCandidates" placeholder="Search candidate by name"/>
+        </div>
+
+        <div class="card shadow-2">
+          <DataTable :value="candidates" :scrollable="true" scrollHeight="200px">
+            <Column field="email" header="Email"></Column>
+            <Column field="name" header="Name"></Column>
+            <Column style="width: 6rem">
+              <template v-slot:body="slotProps">
+                <div class="m-auto">
+                  <Button icon="pi pi-check-circle" class="p-button-rounded p-button-success" @click="selectCandidate(slotProps.data.id)"/>
                 </div>
-                <div class="col m-auto">
-                  <div>{{ slotProps.value.name }}</div>
-                </div>
-              </div>
-            </div>
-            <span v-else>
-                {{ slotProps.placeholder }}
-            </span>
-          </template>
-          <template v-slot:option="slotProps">
-            <div class="country-item">
-              <div class="grid m-auto">
-                <div class="col m-auto">
-                  <div>{{ slotProps.option.id }}</div>
-                </div>
-                <div class="col m-auto">
-                  <div>{{ slotProps.option.name }}</div>
-                </div>
-              </div>
-            </div>
-          </template>
-        </Dropdown>
+              </template>
+            </Column>
+          </DataTable>
+        </div>
+
+        <Divider class="h-1rem"/>
+
+        <div class="card shadow-2" v-if="selectedCandidate !== null">
+          <table class="w-full">
+            <tr>
+              <td class="w-30rem pl-4 py-3">Name</td>
+              <td>{{ selectedCandidate.name }}</td>
+            </tr>
+            <tr>
+              <td class="pl-4 py-3">Email</td>
+              <td>{{ selectedCandidate.email }}</td>
+            </tr>
+            <tr>
+              <td class="pl-4 py-3">Position</td>
+              <td>
+                <InputText id="position" type="text" v-model="position"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="pl-4 py-3">Expected Salary (USD)</td>
+              <td>
+                <InputText id="expected-salary" type="number" v-model="expectedSalary"/>
+              </td>
+            </tr>
+          </table>
+
+          <Divider/>
+
+          <div class="text-right">
+            <Button label="Create" class="p-button-raised p-button-rounded mb-3 mr-3" :disabled="disabled" @click="createdCandidate"/>
+          </div>
+
+        </div>
+
+        <div class="h-1rem"/>
+
       </div>
     </div>
   </div>
@@ -59,26 +86,83 @@ export default {
   data() {
     return {
       selectedCandidate: null,
+      position: "",
+      expectedSalary: 0,
+      search: "",
       candidates: [],
+      disabled: false,
     }
   },
   methods: {
-    listCandidates(){
+    validate() {
+      //init
+      const invalid = "p-invalid"
+      let field = ["position", "expected-salary"]
+      let isValid = true
+
+      // add class invalid
+      field.forEach(value => {
+        if (document.getElementById(value).value === "") {
+          isValid = false
+          document.getElementById(value).classList.add(invalid)
+        }
+      })
+
+      return isValid
+    },
+    listCandidates() {
       // init url
       const context = this
-      let url = `${process.env.VUE_APP_API_USER}/filter`
+      let url = `${process.env.VUE_APP_API_USER}/available/filter?search=${this.search}&per_page=100` //todo: lazy scroll :(
       let header = {
         headers: {
           Authorization: `Bearer ${context.getCookie('token')}`,
         }
       }
-
       // send api
       axios.get(url, header).then(function (response) {
-        context.candidates.push(...response.data.data)
+        context.candidates = response.data.data
       }).catch(function (error) {
         context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
       })
+    },
+    selectCandidate(id) {
+      this.selectedCandidate = this.candidates.find(function (value) {
+        return value.id === id
+      })
+    },
+    createdCandidate() {
+      // validate form
+      let isValid = this.validate()
+      const context = this
+      if (isValid) {
+        // disable button login
+        context.disabled = true
+        // init url
+        let url = `${process.env.VUE_APP_API_RECRUITMENT}/candidate`
+        let data = {
+          user_id: this.selectedCandidate.id,
+          expect_salary: parseFloat(this.expectedSalary),
+          position: this.position
+        }
+        let header = {
+          headers: {
+            Authorization: `Bearer ${context.getCookie('token')}`,
+          }
+        }
+        // send api
+        axios.post(url, data, header).then(function (response) {
+          context.$toast.add({severity: 'success', summary: response.data.message, detail: "success", life: 1000})
+          context.$router.push("/candidates")
+        }).catch(function (error) {
+          context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
+        }).then(function () {
+          // enable button login
+          context.disabled = false
+        })
+      } else {
+        context.$toast.add({severity: 'warn', summary: "Warning", detail: "Please, check form condition", life: 1000})
+      }
     }
   }
 }
