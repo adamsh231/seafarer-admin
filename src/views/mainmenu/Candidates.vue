@@ -8,11 +8,9 @@
       </div>
       <div class="bg-white m-4">
         <DataTable :value="candidates" responsiveLayout="scroll">
-          <Column field="id" header="ID" style="width: 20%;"></Column>
-          <Column field="first" header="FIRST"></Column>
-          <Column field="last" header="LAST"></Column>
-          <Column field="first" header="STATUS"></Column>
-          <Column field="first" header="ACTION"></Column>
+          <Column field="id" header="ID" style="width: 50%;"></Column>
+          <Column field="name" header="Name"></Column>
+          <Column field="email" header="Email"></Column>
         </DataTable>
       </div>
     </div>
@@ -20,6 +18,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Candidates",
   created() {
@@ -27,13 +27,30 @@ export default {
   },
   mounted() {
     this.$store.commit('changeActiveSidebar', 'candidates')
+    this.listCandidates()
   },
   data() {
     return {
-      candidates: [
-        {id: "54e88841-ea0a-444e-8daf-9f26e529405a", first: "Adam", last: "Hidayatullah"},
-        {id: "54e88841-ea0a-444e-8daf-9f26e529405b", first: "Raycall", last: "Arditama"},
-      ]
+      candidates: []
+    }
+  },
+  methods: {
+    listCandidates(){
+      // init url
+      const context = this
+      let url = `${process.env.VUE_APP_API_USER}/candidate/filter`
+      let header = {
+        headers: {
+          Authorization: `Bearer ${context.getCookie('token')}`,
+        }
+      }
+
+      // send api
+      axios.get(url, header).then(function (response) {
+        context.candidates.push(...response.data.data)
+      }).catch(function (error) {
+        context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
+      })
     }
   }
 }

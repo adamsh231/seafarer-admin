@@ -9,7 +9,7 @@
         <hr>
       </div>
       <div class="bg-white m-4">
-        <Dropdown v-model="selectedCountry" :options="countries" optionLabel="name" :filter="true" placeholder="Select a Country" :showClear="true"
+        <Dropdown v-model="selectedCandidate" :options="candidates" optionLabel="name" :filter="true" placeholder="Select Candidate" :showClear="true"
                   class="mb-5 w-full">
           <template v-slot:value="slotProps">
             <div class="country-item country-item-value" v-if="slotProps.value">
@@ -58,8 +58,8 @@ export default {
   },
   data() {
     return {
-      selectedCountry: null,
-      countries: [],
+      selectedCandidate: null,
+      candidates: [],
     }
   },
   methods: {
@@ -75,7 +75,7 @@ export default {
 
       // send api
       axios.get(url, header).then(function (response) {
-        context.countries.push(...response.data.data)
+        context.candidates.push(...response.data.data)
       }).catch(function (error) {
         context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
       })
