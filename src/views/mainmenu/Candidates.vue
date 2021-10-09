@@ -38,7 +38,7 @@ export default {
     listCandidates(){
       // init url
       const context = this
-      let url = `${process.env.VUE_APP_API_USER}/candidate/filter`
+      let url = `${process.env.VUE_APP_API_USER}/available/employee/filter`
       let header = {
         headers: {
           Authorization: `Bearer ${context.getCookie('token')}`,
