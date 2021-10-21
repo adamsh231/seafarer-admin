@@ -33,22 +33,25 @@
         <Divider class="h-1rem"/>
 
         <div class="card shadow-2" v-if="selectedEmployee !== null">
-          <table class="w-full">
-            <tr>
-              <td class="w-30rem pl-4 py-3">Name</td>
-              <td>{{ selectedEmployee.name }}</td>
-            </tr>
-            <tr>
-              <td class="pl-4 py-3">Email</td>
-              <td>{{ selectedEmployee.email }}</td>
-            </tr>
-            <tr>
-              <td class="pl-4 py-3">Expected Salary (USD)</td>
-              <td>
-                <InputText id="salary" type="number" v-model="salary"/>
-              </td>
-            </tr>
-          </table>
+
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <tr>
+                <td class="w-30rem pl-4 py-3">Name</td>
+                <td>{{ selectedEmployee.name }}</td>
+              </tr>
+              <tr>
+                <td class="pl-4 py-3">Email</td>
+                <td>{{ selectedEmployee.email }}</td>
+              </tr>
+              <tr>
+                <td class="pl-4 py-3">Salary (USD)</td>
+                <td>
+                  <InputText id="salary" type="number" v-model="salary"/>
+                </td>
+              </tr>
+            </table>
+          </div>
 
           <Divider/>
 
