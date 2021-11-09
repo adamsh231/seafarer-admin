@@ -8,6 +8,7 @@ import Letters from "../views/mainmenu/Letters";
 import Settings from "../views/mainmenu/Settings";
 import CreateCandidate from "../views/sidemenu/CreateCandidate";
 import CreateEmployee from "../views/sidemenu/CreateEmployee";
+import CreateLetter from "../views/sidemenu/CreateLetter";
 
 const routes = [
   {
@@ -55,6 +56,12 @@ const routes = [
     path: '/create-employee',
     name: 'CreateEmployee',
     component: CreateEmployee
+  }
+  ,
+  {
+    path: '/create-letter',
+    name: 'CreateLetter',
+    component: CreateLetter
   }
 ]
 

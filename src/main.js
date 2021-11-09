@@ -30,6 +30,7 @@ import ToastService from "primevue/toastservice";
 import Toast from "primevue/toast";
 import Dialog from 'primevue/dialog';
 import Dropdown from 'primevue/dropdown';
+import Calendar from 'primevue/calendar';
 // ------------------------------ //
 
 // ----------- Custom ------------ //
@@ -59,6 +60,7 @@ app.component('Toolbar', Toolbar)
 app.component('Toast', Toast)
 app.component('Dialog', Dialog)
 app.component('Dropdown', Dropdown)
+app.component('Calendar', Calendar)
 // ------------------------------ //
 
 app.mixin(globalMixin)
