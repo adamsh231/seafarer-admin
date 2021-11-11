@@ -45,7 +45,7 @@ export default {
 
       // send api
       axios.get(url, header).then(function (response) {
-        context.employees = response.data.data
+        context.standBy = response.data.data
       }).catch(function (error) {
         context.$toast.add({severity: 'error', summary: "Error", detail: error.message, life: 1000})
       })
